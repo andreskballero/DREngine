@@ -4,6 +4,8 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 
+#include "../Sprite/Sprite.h"
+
 /**
 * Enum to keep track of the game states.
 */
@@ -66,6 +68,8 @@ namespace maingame
 		int _screenHeight;				// Game screen height.
 
 		GAME_STATE _gameState;			// Current game state.
+
+		sprite::Sprite _sprite;			// Sprite.
 	};
 }
 

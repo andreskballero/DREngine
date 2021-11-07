@@ -1,6 +1,6 @@
-#include <cstdio>
-
 #include "MainGame.h"
+
+#include <cstdio>
 
 namespace maingame
 {
