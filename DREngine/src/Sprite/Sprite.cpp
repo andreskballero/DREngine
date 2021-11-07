@@ -3,6 +3,10 @@
 namespace sprite
 {
 	Sprite::Sprite() : 
+		_x{0},
+		_y{0},
+		_width{0},
+		_height{0},
 		_vboID{0}
 	{
 
