@@ -7,7 +7,8 @@ namespace maingame
 	MainGame::MainGame() :
 		_window{nullptr},
 		_screenWidth{1024},
-		_screenHeight{768}
+		_screenHeight{768},
+		_gameState{PLAY}
 	{
 
 	}
@@ -19,7 +20,11 @@ namespace maingame
 
 	void MainGame::run()
 	{
+		// Initialize SDL system.
 		initSystems();
+
+		// Game loop.
+		gameLoop();
 	}
 
 	void MainGame::initSystems()
@@ -44,6 +49,32 @@ namespace maingame
 		{
 			// SDL has failed initializing.
 			printf("\nSDL_Init() failure: %s\n", SDL_GetError());
+		}
+	}
+
+	void MainGame::gameLoop()
+	{
+		while (_gameState != EXIT)
+		{
+			processInput();
+		}
+	}
+
+	void MainGame::processInput()
+	{
+		// Event object to keep track of the events in the event queue.
+		SDL_Event evnt;
+
+		// Ask OS what events need to be processed. All events in the queue.
+		while (SDL_PollEvent(&evnt))
+		{
+			// Depending of the event type, do one thing or another.
+			switch (evnt.type)
+			{
+			case SDL_QUIT:
+				_gameState = EXIT;
+				break;
+			}
 		}
 	}
 }
