@@ -1,10 +1,11 @@
 #ifndef H_MAINGAME
 #define H_MAINGAME
 
+#include "../Sprite/Sprite.h"
+#include "../Shaders/GLSLProgram.h"
+
 #include <SDL/SDL.h>
 #include <GL/glew.h>
-
-#include "../Sprite/Sprite.h"
 
 /**
 * Enum to keep track of the game states.
@@ -49,6 +50,11 @@ namespace maingame
 		void initSystems();
 
 		/**
+		* Function that initializes the shaders.
+		*/
+		void initShaders();
+
+		/**
 		* Function that keeps the game inside the main game loop.
 		*/
 		void gameLoop();
@@ -63,13 +69,15 @@ namespace maingame
 		*/
 		void drawGame();
 
-		SDL_Window* _window;			// Pointer to the game window.
-		int _screenWidth;				// Game screen width.
-		int _screenHeight;				// Game screen height.
+		SDL_Window* _window;				// Pointer to the game window.
+		int _screenWidth;					// Game screen width.
+		int _screenHeight;					// Game screen height.
 
-		GAME_STATE _gameState;			// Current game state.
+		GAME_STATE _gameState;				// Current game state.
 
-		sprite::Sprite _sprite;			// Sprite.
+		sprite::Sprite _sprite;				// Sprite.
+
+		glsl::GLSLProgram _colorProgram;	// 
 	};
 }
 

@@ -1,4 +1,5 @@
 #include "MainGame.h"
+#include "../Utils/Errors.h"
 
 #include <cstdio>
 
@@ -23,6 +24,8 @@ namespace maingame
 		// Initialize all systems.
 		initSystems();
 
+		_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f); // Tmp for test.
+
 		// Game loop.
 		gameLoop();
 	}
@@ -33,8 +36,7 @@ namespace maingame
 		if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
 			// SDL has failed initializing.
-			printf("\nSDL_Init() failure: %s\n", SDL_GetError());
-			SDL_Quit();
+			utils::checkErrorSDL("SDL_Init()");
 		}
 
 		// SDL must create the window correctly.
@@ -42,8 +44,7 @@ namespace maingame
 		if (_window == nullptr)
 		{
 			// SDL has failed creating the window.
-			printf("\nSDL_CreateWindow() failure: %s\n", SDL_GetError());
-			SDL_Quit();
+			utils::checkErrorSDL("SDL_CreateWindow()");
 		}
 
 		// Set OpenGL context so the program is able to use OpenGL.
@@ -51,8 +52,7 @@ namespace maingame
 		if (glContext == nullptr)
 		{
 			// Glew has failed initializing.
-			printf("\nSDL_GL_CreateContext() failure: %s\n", SDL_GetError());
-			SDL_Quit();
+			utils::checkErrorSDL("SDL_GL_CreateContext()");
 		}
 
 		// Initialize Glew.
@@ -60,8 +60,7 @@ namespace maingame
 		if (glewInitCheck != GLEW_OK)
 		{
 			// Glew has failed initializing.
-			printf("\nglewInit() failure: %s\n", glewGetErrorString(glewInitCheck));
-			SDL_Quit();
+			utils::checkErrorGLEW("glewInit()", glewInitCheck);
 		}
 
 		// Tell SDL that we want to double buffer: have two windows - (0) draw to while (1) is being cleared.
@@ -69,7 +68,17 @@ namespace maingame
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 		// Every time we call GL_COLOR_BUFFER_BIT, this color is drawn on the screen.
-		glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+		glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
+
+		// Initialize the shaders.
+		//initShaders();
+	}
+
+	void MainGame::initShaders()
+	{
+		_colorProgram.compileShaders("src/Shaders/Vertex/colorShading.vert", "src/Shaders/Fragment/colorShading.frag");
+		_colorProgram.addAttribute("vertexPosition");
+		_colorProgram.linkShaders();
 	}
 
 	void MainGame::gameLoop()
@@ -109,7 +118,11 @@ namespace maingame
 		// Clear buffer (clear the screen).
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		//_colorProgram.use();
 
+		_sprite.draw();
+
+		//_colorProgram.unuse();
 
 		// A B - B A. Flush everything we draw to the screen.
 		SDL_GL_SwapWindow(_window);
