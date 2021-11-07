@@ -10,7 +10,7 @@ namespace sprite
 
 	Sprite::~Sprite()
 	{
-		// Free the buffer to liberate the used VRAM for this.
+		// Free the buffer to liberate the used VRAM for the VBO.
 		if (_vboID != 0)
 		{
 			glDeleteBuffers(1, &_vboID);

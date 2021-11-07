@@ -55,7 +55,7 @@ namespace maingame
 			SDL_Quit();
 		}
 
-		// Initialize GLEW.
+		// Initialize Glew.
 		GLenum glewInitCheck = glewInit();
 		if (glewInitCheck != GLEW_OK)
 		{
@@ -92,7 +92,6 @@ namespace maingame
 		// Ask OS what events need to be processed. All events in the queue.
 		while (SDL_PollEvent(&evnt))
 		{
-			// Depending of the event type, do one thing or another.
 			switch (evnt.type)
 			{
 			case SDL_QUIT:

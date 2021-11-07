@@ -3,6 +3,9 @@
 
 #include <GL/glew.h>
 
+/**
+* Namespace for the sprite management.
+*/
 namespace sprite
 {
 	/**
