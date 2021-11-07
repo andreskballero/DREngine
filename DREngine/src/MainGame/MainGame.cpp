@@ -20,7 +20,7 @@ namespace maingame
 
 	void MainGame::run()
 	{
-		// Initialize SDL system.
+		// Initialize all systems.
 		initSystems();
 
 		// Game loop.
