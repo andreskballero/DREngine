@@ -56,6 +56,11 @@ namespace maingame
 		*/
 		void processInput();
 
+		/**
+		* Function that renders the game.
+		*/
+		void drawGame();
+
 		SDL_Window* _window;			// Pointer to the game window.
 		int _screenWidth;				// Game screen width.
 		int _screenHeight;				// Game screen height.
