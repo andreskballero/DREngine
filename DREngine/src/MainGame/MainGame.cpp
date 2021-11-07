@@ -71,7 +71,7 @@ namespace maingame
 		glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
 
 		// Initialize the shaders.
-		//initShaders();
+		initShaders();
 	}
 
 	void MainGame::initShaders()
@@ -118,11 +118,11 @@ namespace maingame
 		// Clear buffer (clear the screen).
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//_colorProgram.use();
+		_colorProgram.use();
 
 		_sprite.draw();
 
-		//_colorProgram.unuse();
+		_colorProgram.unuse();
 
 		// A B - B A. Flush everything we draw to the screen.
 		SDL_GL_SwapWindow(_window);

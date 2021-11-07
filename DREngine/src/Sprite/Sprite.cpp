@@ -41,7 +41,7 @@ namespace sprite
 		vertexData[1] = y + height;
 		// Set the upper left vertex of the first triangle.
 		vertexData[2] = x;
-		vertexData[3] = y = height;
+		vertexData[3] = y + height;
 		// Set the bottom left vertex of the first triangle.
 		vertexData[4] = x;
 		vertexData[5] = y;
