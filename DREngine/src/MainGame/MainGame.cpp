@@ -78,6 +78,7 @@ namespace maingame
 	{
 		_colorProgram.compileShaders("src/Shaders/Vertex/colorShading.vert", "src/Shaders/Fragment/colorShading.frag");
 		_colorProgram.addAttribute("vertexPosition");
+		_colorProgram.addAttribute("vertexColor");
 		_colorProgram.linkShaders();
 	}
 

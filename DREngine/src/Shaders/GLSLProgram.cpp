@@ -25,6 +25,10 @@ namespace glsl
 
 	void GLSLProgram::compileShaders(const char* vertexShaderFilePath, const char* framentShaderFilePath)
 	{
+		// Vertex and fragment shaders are successfully compiled.
+		// Get a program object.
+		_programID = glCreateProgram();
+
 		// Create the vertex shader.
 		_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 		if (_vertexShaderID == 0)
@@ -49,10 +53,6 @@ namespace glsl
 
 	void GLSLProgram::linkShaders()
 	{
-		// Vertex and fragment shaders are successfully compiled.
-		// Get a program object.
-		_programID = glCreateProgram();
-
 		// Attach the shaders to our program.
 		glAttachShader(_programID, _vertexShaderID);
 		glAttachShader(_programID, _fragmentShaderID);
