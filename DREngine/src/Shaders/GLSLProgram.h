@@ -40,6 +40,11 @@ namespace glsl
 		void addAttribute(const char* attributeName);
 
 		/**
+		* Function .
+		*/
+		GLuint getUniformLocation(const char* uniformName);
+
+		/**
 		* Function to use the program.
 		*/
 		void use();

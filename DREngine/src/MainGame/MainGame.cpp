@@ -9,7 +9,8 @@ namespace maingame
 		_window{nullptr},
 		_screenWidth{1024},
 		_screenHeight{768},
-		_gameState{PLAY}
+		_gameState{PLAY},
+		_time{0.0f}
 	{
 
 	}
@@ -89,6 +90,9 @@ namespace maingame
 			// (0) Process input.
 			processInput();
 
+			// Increment time;
+			_time += 0.01f;
+
 			// (1) Render.
 			drawGame();
 		}
@@ -120,6 +124,11 @@ namespace maingame
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		_colorProgram.use();
+
+		// Set uniforms before drawing.
+		GLuint timeLocation = _colorProgram.getUniformLocation("time");
+		// Send variable.
+		glUniform1f(timeLocation, _time);
 
 		_sprite.draw();
 

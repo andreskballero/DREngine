@@ -91,6 +91,18 @@ namespace glsl
 		glBindAttribLocation(_programID, _numAttributes++, attributeName);
 	}
 
+	GLuint GLSLProgram::getUniformLocation(const char* uniformName)
+	{
+		GLuint location = glGetUniformLocation(_programID, uniformName);
+
+		if (location == GL_INVALID_INDEX)
+		{
+			utils::checkError("Uniform variable not found in shader.");
+		}
+
+		return location;
+	}
+
 	void GLSLProgram::use()
 	{
 		glUseProgram(_programID);

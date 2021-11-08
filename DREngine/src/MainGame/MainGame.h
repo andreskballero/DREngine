@@ -78,6 +78,8 @@ namespace maingame
 		sprite::Sprite _sprite;				// Sprite.
 
 		glsl::GLSLProgram _colorProgram;	// Object that controls the color shaders.
+
+		float _time;						// Time.
 	};
 }
 
