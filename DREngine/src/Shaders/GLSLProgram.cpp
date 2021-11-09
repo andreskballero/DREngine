@@ -93,7 +93,7 @@ namespace glsl
 
 	GLuint GLSLProgram::getUniformLocation(const char* uniformName)
 	{
-		GLuint location = glGetUniformLocation(_programID, uniformName);
+		GLint location = glGetUniformLocation(_programID, uniformName);
 
 		if (location == GL_INVALID_INDEX)
 		{

@@ -36,6 +36,7 @@ namespace glsl
 
 		/**
 		* Function to bind attributes to the shader.
+		* @note Should be called between compiling and linking the shader.
 		*/
 		void addAttribute(const char* attributeName);
 
