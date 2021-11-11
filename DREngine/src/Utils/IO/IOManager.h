@@ -11,10 +11,11 @@ namespace iomanager
 	*/
 	class IOManager
 	{
+	public:
 		/**
 		* Function that reads a specific file to a buffer.
 		*/
-		static bool readFileToBuffer(std::string filePath, std::vector<char>& buffer);
+		static bool readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer);
 	};
 }
 

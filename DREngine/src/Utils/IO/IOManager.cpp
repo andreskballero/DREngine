@@ -4,7 +4,7 @@
 
 namespace iomanager
 {
-	bool IOManager::readFileToBuffer(std::string filePath, std::vector<char>& buffer)
+	bool IOManager::readFileToBuffer(std::string filePath, std::vector<unsigned char>& buffer)
 	{
 		bool success = false;
 
@@ -25,7 +25,7 @@ namespace iomanager
 
 			buffer.resize(fileSize);
 
-			file.read(&(buffer[0]), fileSize);
+			file.read((char*)&(buffer[0]), fileSize);
 			file.close();
 
 			success = true;

@@ -1,5 +1,5 @@
 #include "GLSLProgram.h"
-#include "../Utils/Errors.h"
+#include "../Utils/Errors/Errors.h"
 
 #include <cstdio>
 
